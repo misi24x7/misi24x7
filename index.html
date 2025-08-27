@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Misi 24x7 — AI-Powered Kubernetes Ops</title>
+  <meta name="description" content="Misi 24x7 builds SmartOps — an AI-powered Kubernetes operations dashboard with real-time monitoring, anomaly detection, autoscaling recommendations, and an integrated assistant." />
+  <link rel="icon" href="logo.svg" />
+  <meta property="og:title" content="Misi 24x7 — SmartOps" />
+  <meta property="og:description" content="AI-powered Kubernetes operations dashboard for SREs, DevOps and platform teams." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Misi 24x7",
+    "url":"https://misi24x7.example.com/",
+    "logo":"logo.svg",
+    "brand":{"@type":"Brand","name":"SmartOps","logo":"logo.svg"}
+  }
+  </script>
+</head>
+<body>
+<header class="site-header blur">
+  <nav class="container nav">
+    <a class="brand" href="#top" aria-label="Misi 24x7 home">
+      <img src="logo.svg" alt="Misi 24x7 logo" height="36">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" role="list">
+      <li><a href="#smartops">SmartOps</a></li>
+      <li><a href="#features">Assistant</a></li>
+      <li><a href="#screens">Screens</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="btn small ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <div class="hero-content glass">
+      <h1>Operate Kubernetes <span class="gradient">smarter</span>, not harder.</h1>
+      <p class="lede">Meet <strong>SmartOps</strong> by <strong>Misi 24x7</strong> — an AI-powered operations dashboard with real-time monitoring, anomaly detection, autoscaling recommendations, incident timelines, and an embedded assistant.</p>
+      <div class="cta">
+        <a class="btn primary" href="#smartops">Explore SmartOps</a>
+        <a class="btn ghost" href="#contact">Request a demo</a>
+      </div>
+      <ul class="badges" role="list">
+        <li>⚡ Real-time</li>
+        <li>🧠 AI Insights</li>
+        <li>🛡️ RBAC-friendly</li>
+        <li>🎛️ API-first</li>
+      </ul>
+    </div>
+    <div class="hero-art glass">
+      <div class="terminal">
+        <div class="term-bar"><span></span><span></span><span></span></div>
+<pre><code>$ kubectl get pods -n production
+NAME                          READY   STATUS    RESTARTS   AGE
+api-7fdf976db9-l5kzp          1/1     Running   0          3m
+worker-5d4f5b4c4c-jsg9x       1/1     Running   1          3m
+smartops-ai-7d9dfc5dd-rm2vn   1/1     Running   0          2m
+
+$ smartops anomalies --tail
+[08:59:41] api: p95 latency ↑   (expected 120ms → now 450ms)  🚨
+[09:00:14] worker: CPU spike    (25% → 89%)                    📈
+[09:00:44] hpa: recommended     (min:2 max:6 targetCPU:65%)    🤖
+</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="smartops" class="container section">
+    <header class="section-head">
+      <h2>SmartOps — Intelligent Kubernetes Operations Dashboard</h2>
+      <p class="sub">Everything you need to observe, troubleshoot and scale — in one beautiful UI.</p>
+    </header>
+    <div class="grid3">
+      <div class="card">
+        <h3>Cluster Overview</h3>
+        <p>Live pod & node health, namespaces, and resource metrics — updated every 30s.</p>
+      </div>
+      <div class="card">
+        <h3>Pod Explorer & Logs</h3>
+        <p>Search pods, stream logs in real time, filter by container, and find errors fast.</p>
+      </div>
+      <div class="card">
+        <h3>Kubernetes Shell</h3>
+        <p>Run safe <code>kubectl</code> commands with history, output formatting and RBAC awareness.</p>
+      </div>
+      <div class="card">
+        <h3>Anomaly Detection</h3>
+        <p>Isolation Forest-powered insights spot unusual patterns and alert you early.</p>
+      </div>
+      <div class="card">
+        <h3>Auto-scaling IQ</h3>
+        <p>Data-driven HPA recommendations and one-click updates minimize toil.</p>
+      </div>
+      <div class="card">
+        <h3>Incidents & Postmortems</h3>
+        <p>Timeline, RCA notes, and exportable reports keep your team aligned.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="container section">
+    <header class="section-head">
+      <h2>Misi AI Assistant</h2>
+      <p class="sub">Navigate, ask, act — right from the dashboard.</p>
+    </header>
+    <div class="grid3">
+      <div class="card">
+        <h3>Intelligent Navigation</h3>
+        <p>Ask “show deployments” or “check pods” — jump instantly where you need.</p>
+      </div>
+      <div class="card">
+        <h3>Contextual Help</h3>
+        <p>Explains SmartOps features and Kubernetes concepts in-context.</p>
+      </div>
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <p>Common tasks via chat: tail logs, view metrics, inspect HPA, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="container section">
+    <header class="section-head">
+      <h2>Screenshots</h2>
+      <p class="sub">Drop in your real screenshots to replace these placeholders.</p>
+    </header>
+    <div class="screens">
+      <figure class="shot glass" aria-label="Cluster overview screenshot placeholder">
+        <figcaption>Overview</figcaption>
+      </figure>
+      <figure class="shot glass" aria-label="Pod explorer screenshot placeholder">
+        <figcaption>Pod Explorer</figcaption>
+      </figure>
+      <figure class="shot glass" aria-label="Anomaly detection screenshot placeholder">
+        <figcaption>Anomaly Detection</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="pricing" class="container section">
+    <header class="section-head">
+      <h2>Pricing</h2>
+      <p class="sub">Start free. Scale with your team.</p>
+    </header>
+    <div class="pricing">
+      <div class="price-card glass">
+        <h3>Community</h3>
+        <p class="amount">$0</p>
+        <ul>
+          <li>All core features</li>
+          <li>Single cluster</li>
+          <li>Email community support</li>
+        </ul>
+        <a class="btn" href="#contact">Get Started</a>
+      </div>
+      <div class="price-card featured glass">
+        <h3>Pro</h3>
+        <p class="amount">$29<span>/user/mo</span></p>
+        <ul>
+          <li>Multi-cluster</li>
+          <li>SSO & RBAC sync</li>
+          <li>Alerting & webhooks</li>
+          <li>Priority support</li>
+        </ul>
+        <a class="btn primary" href="#contact">Request demo</a>
+      </div>
+      <div class="price-card glass">
+        <h3>Enterprise</h3>
+        <p class="amount">Custom</p>
+        <ul>
+          <li>Private cloud/on-prem</li>
+          <li>SLA & dedicated support</li>
+          <li>Security reviews</li>
+          <li>Roadmap influence</li>
+        </ul>
+        <a class="btn" href="#contact">Talk to sales</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container section">
+    <header class="section-head">
+      <h2>Contact</h2>
+      <p class="sub">Have questions or want a walkthrough? We’d love to talk.</p>
+    </header>
+    <form name="contact" class="contact glass" method="post" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" required placeholder="Jane Doe" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="jane@company.com" />
+      </div>
+      <div class="field">
+        <label for="company">Company</label>
+        <input id="company" name="company" placeholder="Acme Inc." />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us about your cluster & needs"></textarea>
+      </div>
+      <button class="btn primary" type="submit">Send</button>
+      <p class="micro">Or email us at <a href="mailto:hello@misi24x7.com">hello@misi24x7.com</a></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container foot">
+    <div class="foot-brand">
+      <img src="logo.svg" height="28" alt="Misi 24x7" />
+      <p class="micro">© <span id="year"></span> Misi 24x7. All rights reserved.</p>
+    </div>
+    <ul class="foot-links" role="list">
+      <li><a href="#smartops">Product</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" rel="nofollow">Privacy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
