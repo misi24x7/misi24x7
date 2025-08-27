@@ -32,4 +32,76 @@
       if (now === 'light') setLight(); else location.reload();
     });
   }
+
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDescription = document.getElementById('lightbox-description');
+
+  // Screenshot data for lightbox
+  const screenshotData = {
+    'overview': {
+      title: 'Cluster Overview Dashboard',
+      description: 'Real-time monitoring of pod status, node health, and resource metrics across all namespaces.',
+      image: 'screenshots/overview.png'
+    },
+    'pod-explorer': {
+      title: 'Pod Explorer & Logs',
+      description: 'Browse pods by namespace, view real-time logs, and manage containers with ease.',
+      image: 'screenshots/pod-explorer.png'
+    },
+    'anomaly-detection': {
+      title: 'AI Anomaly Detection',
+      description: 'Machine learning-powered insights that detect unusual patterns and alert you proactively.',
+      image: 'screenshots/anomaly-detection.png'
+    },
+    'kubernetes-shell': {
+      title: 'Kubernetes Shell',
+      description: 'Execute kubectl commands directly from the dashboard with RBAC awareness and history.',
+      image: 'screenshots/kubernetes-shell.png'
+    },
+    'auto-scaling': {
+      title: 'Auto-scaling Control',
+      description: 'AI-powered HPA recommendations and one-click updates for optimal resource utilization.',
+      image: 'screenshots/auto-scaling.png'
+    },
+    'misi-ai': {
+      title: 'Misi AI Assistant',
+      description: 'Intelligent chatbot providing contextual help, navigation, and quick actions.',
+      image: 'screenshots/misi-ai.png'
+    }
+  };
+
+  // Open lightbox function
+  window.openLightbox = function(screenshotId) {
+    const data = screenshotData[screenshotId];
+    if (data) {
+      lightboxImg.src = data.image;
+      lightboxTitle.textContent = data.title;
+      lightboxDescription.textContent = data.description;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+  };
+
+  // Close lightbox function
+  window.closeLightbox = function() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+  };
+
+  // Close lightbox with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  // Close lightbox when clicking outside content
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
 })();

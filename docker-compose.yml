@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  smartops-website:
+    build: .
+    container_name: smartops-website
+    ports:
+      - "80:80"
+      - "443:443"  # For HTTPS if needed later
+    volumes:
+      # Optional: Mount logs for debugging
+      - ./logs:/var/log/nginx
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - smartops-network
+
+networks:
+  smartops-network:
+    driver: bridge
+
+volumes:
+  nginx-logs:
