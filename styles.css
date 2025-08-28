@@ -786,6 +786,262 @@ p {
   }
 }
 
+/* Implementation Section */
+.implementation-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.step-card {
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.step-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.step-card h3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.step-card ul {
+  list-style: none;
+  text-align: left;
+}
+
+.step-card li {
+  padding: 0.5rem 0;
+  color: var(--text-light);
+}
+
+.step-card li::before {
+  content: '✓';
+  color: var(--secondary);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Code Blocks */
+.code-block {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.code-header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1rem;
+  color: #e0e0e0;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.code-block.small pre {
+  font-size: 0.8rem;
+  padding: 0.75rem;
+}
+
+/* Deployment Options */
+.deployment-options {
+  margin-bottom: 4rem;
+}
+
+.deployment-options h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.option-tabs {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.tab-content {
+  position: relative;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.tab-pane h4 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.tab-pane p {
+  margin-top: 1rem;
+  color: var(--text-light);
+}
+
+/* Configuration Section */
+.configuration-section {
+  margin-bottom: 4rem;
+}
+
+.configuration-section h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.config-card {
+  padding: 1.5rem;
+}
+
+.config-card h4 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+/* Next Steps */
+.next-steps {
+  margin-bottom: 4rem;
+}
+
+.next-steps h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.step-item {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.step-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.step-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.step-item h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.step-item p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .nav-links {

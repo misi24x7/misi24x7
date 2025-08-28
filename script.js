@@ -104,4 +104,71 @@
       closeLightbox();
     }
   });
+
+  // Tab functionality for deployment options
+  window.showTab = function(tabName) {
+    // Hide all tab panes
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    tabPanes.forEach(pane => pane.classList.remove('active'));
+    
+    // Remove active class from all tab buttons
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => btn.classList.remove('active'));
+    
+    // Show selected tab pane
+    const selectedPane = document.getElementById(tabName);
+    if (selectedPane) {
+      selectedPane.classList.add('active');
+    }
+    
+    // Activate selected tab button
+    const selectedBtn = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+    if (selectedBtn) {
+      selectedBtn.classList.add('active');
+    }
+  };
+
+  // Copy to clipboard functionality
+  window.copyToClipboard = function(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const text = element.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        // Show success feedback
+        const copyBtn = element.parentElement.querySelector('.copy-btn');
+        if (copyBtn) {
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = '✅';
+          copyBtn.style.background = 'var(--secondary)';
+          
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.background = '';
+          }, 2000);
+        }
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Show success feedback
+        const copyBtn = element.parentElement.querySelector('.copy-btn');
+        if (copyBtn) {
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = '✅';
+          copyBtn.style.background = 'var(--secondary)';
+          
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.background = '';
+          }, 2000);
+        }
+      });
+    }
+  };
 })();

@@ -38,6 +38,7 @@
       <li><a href="#features">Assistant</a></li>
       <li><a href="#screens">Screens</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#get-smartops">Get SmartOps</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><button class="btn small ghost" id="themeToggle" aria-label="Toggle dark mode">🌙</button></li>
     </ul>
@@ -386,6 +387,192 @@ $ smartops anomalies --tail
     </div>
   </section>
 
+  <section id="get-smartops" class="container section">
+    <header class="section-head">
+      <h2>🚀 Get SmartOps Running in Your Cluster</h2>
+      <p class="sub">Deploy SmartOps in minutes with our step-by-step implementation guide</p>
+    </header>
+    
+    <div class="implementation-steps">
+      <div class="step-card glass">
+        <div class="step-number">1</div>
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Kubernetes cluster (v1.20+)</li>
+          <li>kubectl configured</li>
+          <li>Python 3.8+ (optional for local development)</li>
+          <li>Git access</li>
+        </ul>
+      </div>
+      
+      <div class="step-card glass">
+        <div class="step-number">2</div>
+        <h3>Quick Deploy</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span>Deploy with one command</span>
+            <button class="copy-btn" onclick="copyToClipboard('deploy-command')">📋</button>
+          </div>
+          <pre id="deploy-command"><code>kubectl apply -f https://raw.githubusercontent.com/misi24x7/smartops/main/k8s/</code></pre>
+        </div>
+      </div>
+      
+      <div class="step-card glass">
+        <div class="step-number">3</div>
+        <h3>Access Dashboard</h3>
+        <ul>
+          <li>Port-forward: <code>kubectl port-forward -n smartops svc/smartops-dashboard 8501:8501</code></li>
+          <li>Open: <a href="http://localhost:8501" target="_blank">http://localhost:8501</a></li>
+          <li>Start monitoring your cluster!</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="deployment-options">
+      <h3>🎯 Deployment Options</h3>
+      
+      <div class="option-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="showTab('helm')">Helm Chart</button>
+          <button class="tab-btn" onclick="showTab('kubectl')">Kubectl</button>
+          <button class="tab-btn" onclick="showTab('docker')">Docker</button>
+          <button class="tab-btn" onclick="showTab('local')">Local Development</button>
+        </div>
+        
+        <div class="tab-content">
+          <div id="helm" class="tab-pane active">
+            <h4>🚁 Helm Chart Deployment</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span>Add repository and install</span>
+                <button class="copy-btn" onclick="copyToClipboard('helm-command')">📋</button>
+              </div>
+              <pre id="helm-command"><code>helm repo add smartops https://misi24x7.github.io/smartops
+helm repo update
+helm install smartops smartops/smartops --namespace smartops --create-namespace</code></pre>
+            </div>
+            <p>Perfect for production deployments with easy upgrades and configuration management.</p>
+          </div>
+          
+          <div id="kubectl" class="tab-pane">
+            <h4>⚡ Direct Kubectl Deployment</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span>Deploy from GitHub manifests</span>
+                <button class="copy-btn" onclick="copyToClipboard('kubectl-command')">📋</button>
+              </div>
+              <pre id="kubectl-command"><code>git clone https://github.com/misi24x7/smartops.git
+cd smartops/k8s
+kubectl apply -f namespace.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml</code></pre>
+            </div>
+            <p>Full control over deployment with custom manifests and configurations.</p>
+          </div>
+          
+          <div id="docker" class="tab-pane">
+            <h4>🐳 Docker Compose Deployment</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span>Run locally with Docker</span>
+                <button class="copy-btn" onclick="copyToClipboard('docker-command')">📋</button>
+              </div>
+              <pre id="docker-command"><code>git clone https://github.com/misi24x7/smartops.git
+cd smartops
+docker-compose up -d</code></pre>
+            </div>
+            <p>Quick local testing and development without Kubernetes cluster setup.</p>
+          </div>
+          
+          <div id="local" class="tab-pane">
+            <h4>💻 Local Development Setup</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span>Run from source</span>
+                <button class="copy-btn" onclick="copyToClipboard('local-command')">📋</button>
+              </div>
+              <pre id="local-command"><code>git clone https://github.com/misi24x7/smartops.git
+cd smartops/dashboard
+pip install -r requirements.txt
+streamlit run streamlit_app.py</code></pre>
+            </div>
+            <p>Develop and customize SmartOps features locally with hot reloading.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="configuration-section">
+      <h3>⚙️ Configuration</h3>
+      <div class="config-grid">
+        <div class="config-card glass">
+          <h4>Environment Variables</h4>
+          <div class="code-block small">
+            <pre><code>KUBECONFIG=/path/to/kubeconfig
+TELEGRAM_BOT_TOKEN=your_bot_token
+ANOMALY_SENSITIVITY=0.1
+LOG_LEVEL=INFO</code></pre>
+          </div>
+        </div>
+        
+        <div class="config-card glass">
+          <h4>RBAC Configuration</h4>
+          <div class="code-block small">
+            <pre><code>apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: smartops-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "nodes"]
+  verbs: ["get", "list", "watch"]</code></pre>
+          </div>
+        </div>
+        
+        <div class="config-card glass">
+          <h4>Persistent Storage</h4>
+          <div class="code-block small">
+            <pre><code>apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: smartops-storage
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 10Gi</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="next-steps">
+      <h3>🎯 Next Steps</h3>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-icon">📚</div>
+          <h4>Read Documentation</h4>
+          <p>Explore our comprehensive guides and API references</p>
+          <a href="https://github.com/misi24x7/smartops" target="_blank" class="btn ghost">View Docs</a>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-icon">💬</div>
+          <h4>Join Community</h4>
+          <p>Get help from other users and share your experiences</p>
+          <a href="#contact" class="btn ghost">Contact Us</a>
+        </div>
+        
+        <div class="step-item">
+          <div class="step-icon">🚀</div>
+          <h4>Start Monitoring</h4>
+          <p>Begin monitoring your cluster with AI-powered insights</p>
+          <a href="http://34.9.232.188/" target="_blank" class="btn primary">Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="container section">
     <header class="section-head">
       <h2>Contact</h2>
@@ -395,11 +582,11 @@ $ smartops anomalies --tail
       <input type="hidden" name="form-name" value="contact" />
       <div class="field">
         <label for="name">Name</label>
-        <input id="name" name="name" required placeholder="Jane Doe" />
+        <input id="name" name="name" required placeholder="Sachin Fernando" />
       </div>
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="jane@company.com" />
+        <input id="email" name="email" type="email" required placeholder="Sachin@company.com" />
       </div>
       <div class="field">
         <label for="company">Company</label>
