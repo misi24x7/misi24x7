@@ -117,6 +117,15 @@ p {
   color: var(--text);
 }
 
+.brand img {
+  height: 36px;
+  width: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px rgba(0, 187, 249, 0.3));
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -672,6 +681,15 @@ p {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.foot-brand img {
+  height: 28px;
+  width: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 6px rgba(0, 187, 249, 0.2));
 }
 
 .foot-links {
